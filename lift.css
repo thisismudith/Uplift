@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap');
+/* RESET */
+@font-face{
+	font-family: 'Ginto Nord';
+	font-weight: 800;
+	src: url('assets/ginto-800.woff') format('woff');
+}
+*,
+*::before,
+*::after{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Comfortaa';
+}
+body, html{
+	margin: 0;
+	padding: 0;
+	/* overflow: hidden; */
+	background-color: var(--light);
+}
+:root{
+	--light: #F2F7F4;
+	--red: #F04F78;
+	--green: #0EAF9B;
+	--dark: #3E3546;
+}
+body{
+	background-color: var(--light);
+}
+
+.center{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.title{
+	margin: 10px;
+	color: var(--dark);
+	font-size: 34px;
+	column-gap: 20px;
+}
+.title img{
+	width: 65px;
+	height: 65px;
+}
+/* .title h1{
+	font-family: 'Ginto Nord';
+} */
+.lift{
+	flex-direction: column;
+}
+.main{
+	height: calc(100vh - 96px);
+}
+.container{
+	/* position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%); */
+	margin: auto;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	column-gap: 50px;
+	row-gap: 20px;
+	width: fit-content;
+	align-items: center;
+	justify-content: center;
+}
+
+.floors{
+	flex-direction: row-reverse;
+	flex-wrap: wrap;
+	gap: 10px;
+	width: 220px;
+	background-color: #9BABB2;
+	border-radius: 10px;
+	padding: 20px;
+}
+.floor{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 50px;
+	height: 50px;
+	border-radius: 100%;
+	cursor: pointer;
+	color: var(--light);
+	font-weight: bold;
+	font-family: 'Comfortaa';
+	background-color: var(--dark);
+	transition: background-color .2s ease-in-out;
+}
+.floor:hover{
+	background-color: #242028;
+}
+.floor.active{
+	background-color: var(--green);
+}
+.btn{
+	padding: 10px;
+	border-radius: 3px;
+	border: transparent;
+	cursor: pointer;
+}
+*:disabled{
+	cursor: not-allowed !important;
+	opacity: .95;
+}
+.toggle{
+	color: var(--light);
+	transition: all .3s;
+	background-color: var(--green);
+}
+.toggle:hover{
+	background-color: #089c8b;
+}
+.toggle.stop{
+	background-color: #F04F78;
+}
+.toggle.stop:hover{
+	background-color: #ec3462;
+}
+.line{
+	height: 22px;
+	width: 3px;
+	margin: 4px;
+	border-radius: 2px;
+	background-color: var(--light);
+}
+.triangle{
+	border-radius: 2px;
+	border-top: 12px solid transparent;
+	border-bottom: 12px solid transparent; 
+	border-right: 12px solid var(--light); 
+}
+.triangle.reverse{
+	transform: rotateY(180deg);
+}
+#door{
+	transition: transform 1s;
+}
+.data{
+	width: fit-content;
+	margin: auto;
+	margin-top: 50px;
+}
+.data.mobile{
+	display: none;
+	width: fit-content;
+	margin: auto;
+	margin-top: 50px;
+}
+.data p{
+	font-size: 20px;
+	margin: 5px;
+}
+
+@media only screen and (max-width: 600px){
+	.main{
+		display: block;
+	}
+	.data{
+		display: none;
+	}
+	.data.mobile{
+		display: block;
+	}
+}
