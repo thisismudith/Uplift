@@ -10,7 +10,8 @@ function openElevator() {
 		leftDoor.style.transform = 'translateX(-14px)';
 		rightDoor.style.transform = 'translateX(14px)';
 		closeTimeout = setTimeout(closeElevator, 3500);
-	}
+	};
+	updateData();
 }
 function closeElevator(){
 	clearTimeout(closeTimeout);
@@ -19,10 +20,10 @@ function closeElevator(){
 	setTimeout(()=>{
 		opened=false;
 		elevatorMove((+document.getElementById("floor").textContent > floors[0]) ? -1:1);
-	}, 1000)
+	}, 1000);
+	updateData();
 }
 function floorUpdate(){
-	updateData();
 	let floor = +this.innerHTML;
 	let dir = (+document.getElementById("floor").textContent > floors[0]) ? -1:1
 	if (floors.includes(floor)){
@@ -35,6 +36,7 @@ function floorUpdate(){
 		this.classList.add('active');
 	}
 	floors = floors.sort((a, b) => (dir==1) ? a-b : b-a);
+	updateData();
 	easterEggs();
 	if (!running) elevatorMove(dir);
 }
@@ -51,6 +53,7 @@ function elevatorMove(incr=1){
 	if (floors[0] == +document.getElementById("floor").textContent){
 		openElevator();
 		document.getElementById(+document.getElementById("floor").textContent).classList.remove('active');
+		floors.splice(floors.indexOf(floor), 1);
 		running = true;
 	}else if (floors.length > 0 && start && !opened){
 		running = false;
